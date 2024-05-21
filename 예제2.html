@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예제2</title>
+    <style>
+        * {margin:0; padding:0;}
+        .count_wrap {display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; height:100vh;}
+        h2 {font-size:100px; text-align:center;}
+        .count {font-size:100px; text-align:center; margin-bottom:30px; color:green;}
+        .btn_area button {background:transparent; padding:10px 20px; border:1px solid #ddd; border-radius:8px; cursor: pointer; font-size:18px;}
+        .btn_area .increase {color:#4279ff;}
+        .btn_area .decrease {color:#ff4000;}
+    </style>
+</head>
+<body>
+    <div class="count_wrap">
+        <h2>Counter</h2>
+        <strong class="count">0</strong>
+        <div class="btn_area">
+            <button type="button" class="decrease">DECREASE</button>
+            <button type="button" class="reset">RESET</button>
+            <button type="button" class="increase">INCREASE</button>
+        </div>
+    </div>
+
+    <script>
+        // .count 의 값이 양수인지 음수인지에 따라 색상이 바뀌게
+        // .increase 클릭 시 증가 .decrease 클릭 시 감소 .reset 클릭시 0 으로 리셋
+        
+
+/* 
+document.querySelectorAll() O
+forEach() O
+addEventListener() O
+currentTarget 속성
+classList
+textContent O
+*/
+
+       
+       /*  document.querySelector('.decrease').addEventListener("click", () => {
+            count --
+            countText.textContent = count;
+        });
+
+        document.querySelector('.increase').addEventListener("click", () => {
+            count ++
+            countText.textContent = count;
+        });
+
+        document.querySelector('.reset').addEventListener("click", () => {
+            count = 0;
+            countText.textContent = count;
+        });
+ */
+        // document.querySelectorAll('button')
+        // console.log(document.querySelectorAll('button'));
+
+        let count = 0;
+        let countText = document.querySelector('.count');
+
+        document.querySelectorAll('button').forEach((buttons, i) => {
+            buttons.addEventListener("click" , () => {
+                if(i === 0) {
+                    count --;
+                } else if(i === 1) {
+                    count = 0;
+                } else if(i === 2) {
+                    count ++;
+                }
+                countText.textContent = count;
+            });
+        });
+
+    </script>
+</body>
+</html>
